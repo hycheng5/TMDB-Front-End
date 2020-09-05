@@ -1,0 +1,11 @@
+{
+  "movieApiToken": "ed6b123c06b1f52d42ce6d20c45e087d",
+
+  "movieDbSearchStart":"https://api.themoviedb.org/3/search/movie?api_key=ed6b123c06b1f52d42ce6d20c45e087d&language=en-US&query=",
+  "movieDbSearchEnd":"&page=1&include_adult=true",
+
+  "moviePoster":"https://image.tmdb.org/t/p/w500",
+
+  "apiUrl": "http://localhost:8080/api/"
+
+}

@@ -3,7 +3,6 @@ import '../../App.css';
 import MovieApi from '../../api/MovieApi';
 import MovieElement from './MovieElement';
 import searchButtonIcon from '../../images/icons8-search-64.png';
-import defaultImage from '../../images/imagenotfound.png';
 class MovieSearch extends React.Component{
   constructor(props){
     super(props)
@@ -22,7 +21,7 @@ class MovieSearch extends React.Component{
     this.setState({searchInput: event.target.value});
   }
   handleSubmit = (event) => {
-    if(this.state.searchInput == ""){
+    if(this.state.searchInput === ""){
       this.setState({searchResult:[]});
       return;
     }
@@ -55,6 +54,7 @@ class MovieSearch extends React.Component{
           <div className = "movieSearchButton">
             <img
               src = {searchButtonIcon}
+              alt = "search button Icon"
               onClick = {this.handleSubmit}/>
           </div>
 

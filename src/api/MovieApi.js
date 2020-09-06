@@ -66,7 +66,6 @@ class MovieApi{
         "user_id": userId
       }
     }).then(res=>{
-      var results = res;
     })
   }
   static removeUserMovie(movie,userId){

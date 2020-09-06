@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../App.css';
 import MovieApi from '../../api/MovieApi';
-import defaultImage from '../../images/imagenotfound.png';
 
 let config = require('../../config.json');
 
@@ -47,6 +46,7 @@ class MovieElement extends React.Component{
         <div>
           <img
             className = "moviePoster"
+            alt = "Movie Poster"
             src = {config.moviePoster+this.props.movie.poster_path}>
           </img>
           <div className = "ownedCheckBoxContainer">

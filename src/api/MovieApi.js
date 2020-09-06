@@ -37,7 +37,6 @@ class MovieApi{
     movieList.forEach((item) => {
       movieIdList.push(item.id);
     });
-    console.log(movieIdList);
     var url = config.apiUrl+'check_user_own_movie_list';
     axios({
       method:'post',
@@ -71,15 +70,16 @@ class MovieApi{
   static removeUserMovie(movie,userId){
     var url = config.apiUrl+'remove_movie';
     axios({
-      method:'post',
+      method:'delete',
       url: url,
       params: {
         "movie_id":movie.id,
-        user_id:userId
 
+        "user_id":userId
       }
     }).then(res=>{
-    }) }
+      return res.data;
+    })}
 
 
 }

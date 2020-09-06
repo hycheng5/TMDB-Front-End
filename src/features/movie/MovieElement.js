@@ -1,6 +1,8 @@
 import React from 'react';
 import '../../App.css';
 import MovieApi from '../../api/MovieApi';
+import defaultImage from '../../images/imagenotfound.png';
+
 let config = require('../../config.json');
 
 class MovieElement extends React.Component{
@@ -9,34 +11,27 @@ class MovieElement extends React.Component{
     this.state = {owned:false};
   }
 
-  //add api call to check if use has this spicific movie
+  //when component mounts it should set the current state of
+  //ownship to the props value since props should be immutable
   componentDidMount(){
-
-    console.log(this.props.owned);
     this.setState({owned:this.props.owned});
-
-    /*MovieApi.checkUserOwnsMovie(this.props.movie.id,1,(isOwned) =>{
-      if(isOwned == true){
-        this.setState({owned:this.props.owned});
-      }
-    });*/
-
   }
+
+  //this checks if the
   handleCheckBox = () =>{
     if(this.state.owned){
-      MovieApi.removeUserMovie(this.props.movie,1)
-      this.setState({owned:false})
+      MovieApi.removeUserMovie(this.props.movie,1);
+      this.setState({owned:false});
     }else{
-
-      MovieApi.addUserMovie(this.props.movie,1)
-      this.setState({owned:true})
+      MovieApi.addUserMovie(this.props.movie,1);
+      this.setState({owned:true});
     }
   }
+
 
   render(){
     return(
       <div className = "movieElementContainer">
-
         <div>
           <h1>
             {this.props.movie.original_title +" "}
@@ -57,7 +52,6 @@ class MovieElement extends React.Component{
           <div className = "ownedCheckBoxContainer">
             <h1>
               Owned
-
             </h1>
             <input
               id = "movieCheckBox"

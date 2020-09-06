@@ -12,17 +12,13 @@ class MovieApi{
     axios({
       method:'get',
       url: url
-
     }).then(res=>{
       var results = res.data.results.slice(0,10);
-
       callback(results);
     })
   }
 
   static checkUserOwnsMovie(movieId,userId,callback){
-    console.log("got also")
-
     var url = config.apiUrl+'check_user_owns_movie';
     axios({
       method:'post',
@@ -32,8 +28,26 @@ class MovieApi{
         'user_id': userId
       }
     }).then(res=>{
-      console.log(res);
       callback(res.data);
+    })
+  }
+
+  static checkUserOwnsMovieList(movieList,userId,callback){
+    var movieIdList = [];
+    movieList.forEach((item) => {
+      movieIdList.push(item.id);
+    });
+    console.log(movieIdList);
+    var url = config.apiUrl+'check_user_own_movie_list';
+    axios({
+      method:'post',
+      url: url,
+      params: {
+        'movie_list':movieIdList,
+        'user_id': userId
+      }
+    }).then(res=>{
+        callback(res.data);
     })
   }
 

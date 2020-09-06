@@ -8,12 +8,12 @@ class MovieSearch extends React.Component{
     this.state = {
       searchInput:"",
       searchResult:[],
+      owned:[]
     };
   }
 
 
   componentDidMount(){
-    //MovieApi.checkUserOwnMovies([{movie_id:99861}],1);
   }
   handleChange = (event) => {
     this.setState({searchInput: event.target.value});
@@ -21,8 +21,18 @@ class MovieSearch extends React.Component{
   handleSubmit = (event) => {
 
     MovieApi.getMovieQuery(this.state.searchInput,(movies)=>{
-      this.setState({
-          searchResult:movies,
+      MovieApi.checkUserOwnsMovieList(movies,1,(results)=>{
+        console.log(results);
+        var ownedList = []
+        results.forEach((item, i) => {
+          ownedList.push(item.movie_id);
+        });
+
+        this.setState({
+            searchResult:movies,
+            owned:ownedList
+        });
+
       });
     });
 
@@ -34,7 +44,7 @@ class MovieSearch extends React.Component{
       <div className = "movieBar">
         <div>
           <label >
-            <input className = "movieSearchBox" type="text" name="name" placeholder = "search for a movie!"
+            <input className = "movieSearchBox" type="text" name="name" placeholder = "search movie"
                value = {this.state.searchInput} onChange = {this.handleChange} />
           </label>
             <input type="button" value="search" onClick = {this.handleSubmit}/>
@@ -43,7 +53,7 @@ class MovieSearch extends React.Component{
         <div>
           {this.state.searchResult.length >= 0 ?
             this.state.searchResult.map((item,index) =>
-              <MovieElement movie = {item} key = {item.title}/>
+              <MovieElement movie = {item} key = {item.title} owned = {this.state.owned.includes(item.id)}/>
             )
             : null}
 

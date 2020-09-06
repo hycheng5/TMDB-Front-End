@@ -3,17 +3,28 @@
   margin-top: 20px;
   text-align: center;
   background-color: aliceblue;
+  max-width:100%;
+  max-height:20%;
+  width: auto;
+  height: auto;
 }
 
 .movieSearchBox{
-  border:solid;
-  border-radius:.5px;
-  radius:200px;
+  border-radius:30px;
   margin:auto;
   margin-bottom: 10px;
+  width:10%;
+  height:50px;
+  font-size: 30px;
+  -webkit-transition: width 0.4s ease-in-out;
+  outline: none;
 
 }
 
+.movieSearchBox:focus{
+  width:40%;
+
+}
 .searchButton{
   background-color: aliceblue;
 }
@@ -41,15 +52,15 @@
 }
 
 .ownedCheckBox{
-  height: 50px;
-  width:50px;
+  height: 100px;
+  width:500px;
 
 }
 
 
 .ownedCheckBoxContainer{
   float:right;
-  margin-top:15%;
+  margin-top:7%;
   text-align: center;
-  padding-right: 8%;
+  padding-right: 15%;
 }

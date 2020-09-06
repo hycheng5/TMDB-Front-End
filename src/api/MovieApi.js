@@ -59,7 +59,7 @@ class MovieApi{
       params: {
         "movie_id":movie.id,
         "overview":movie.overview,
-        "releaseDate":movie.release_date,
+        "release_date":movie.release_date,
         "title":movie.original_title,
         "user_id": userId
       }

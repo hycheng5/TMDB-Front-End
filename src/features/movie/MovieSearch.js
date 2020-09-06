@@ -61,7 +61,7 @@ class MovieSearch extends React.Component{
         <div>
           {this.state.searchResult.length > 0 ?
             this.state.searchResult.map((item,index) =>
-              <MovieElement movie = {item} key = {item.title} owned = {this.state.owned.includes(item.id)}/>
+              <MovieElement movie = {item} key = {item.id} owned = {this.state.owned.includes(item.id)}/>
             )
             :
             <div className ="emptyResult">

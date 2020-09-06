@@ -11,14 +11,9 @@ class MovieElement extends React.Component{
 
   //add api call to check if use has this spicific movie
   componentDidMount(){
-    console.log( this.props.movie);
     MovieApi.checkUserOwnsMovie(this.props.movie.id,1,(isOwned) =>{
-
       if(isOwned == true){
-
-        console.log("is true "+this.props.movie.title);
         this.setState({owned:true});
-
       }
     });
   }
@@ -64,7 +59,8 @@ class MovieElement extends React.Component{
               className = "ownedCheckBox"
               type = "checkbox"
               onClick = {this.handleCheckBox}
-              checked = {this.state.owned}></input>
+              checked = {this.state.owned}
+              ></input>
           </div>
 
         </div>

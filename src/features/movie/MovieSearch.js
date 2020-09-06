@@ -42,8 +42,8 @@ class MovieSearch extends React.Component{
 
         <div>
           {this.state.searchResult.length >= 0 ?
-            this.state.searchResult.map((item, index) =>
-              <MovieElement movie = {item} key = {index}/>
+            this.state.searchResult.map((item,index) =>
+              <MovieElement movie = {item} key = {item.title}/>
             )
             : null}
 

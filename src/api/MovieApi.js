@@ -21,7 +21,7 @@ class MovieApi{
   }
 
   static checkUserOwnsMovie(movieId,userId,callback){
-    console.log("checking");
+    console.log("got also")
 
     var url = config.apiUrl+'check_user_owns_movie';
     axios({
@@ -32,7 +32,7 @@ class MovieApi{
         'user_id': userId
       }
     }).then(res=>{
-      console.log(res.data);
+      console.log(res);
       callback(res.data);
     })
   }
@@ -65,7 +65,6 @@ class MovieApi{
 
       }
     }).then(res=>{
-      console.log(res)
     }) }
 
 

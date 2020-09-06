@@ -10,7 +10,8 @@ class MovieSearch extends React.Component{
     this.state = {
       searchInput:"",
       searchResult:[],
-      owned:[]
+      owned:[],
+      resultSize:0
     };
   }
 
@@ -26,14 +27,15 @@ class MovieSearch extends React.Component{
       return;
     }
     MovieApi.getMovieQuery(this.state.searchInput,(movies)=>{
-      MovieApi.checkUserOwnsMovieList(movies,1,(results)=>{
+      MovieApi.checkUserOwnsMovieList(movies.results,1,(results)=>{
         var ownedList = []
         results.forEach((item, i) => {
           ownedList.push(item.movie_id);
         });
         this.setState({
-            searchResult:movies,
-            owned:ownedList
+            searchResult:movies.results,
+            owned:ownedList,
+            resultSize:movies.resultSize
         });
       });
     });
@@ -68,9 +70,11 @@ class MovieSearch extends React.Component{
               No Search Results...
             </div>
           }
-
         </div>
-
+        <h2>
+          Total Results:
+          {" "+this.state.resultSize}
+        </h2>
       </div>
     );
   }

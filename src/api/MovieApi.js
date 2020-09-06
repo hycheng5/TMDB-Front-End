@@ -13,8 +13,10 @@ class MovieApi{
       method:'get',
       url: url
     }).then(res=>{
+
       var results = res.data.results.slice(0,10);
-      callback(results);
+
+      callback({results:results,resultSize:res.data.total_results});
     })
   }
 
